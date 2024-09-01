@@ -1,0 +1,36 @@
+package com.dynamicproxy.proxy;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+import com.dynamicproxy.dto.IEmployee;
+
+public class EmployeeSalaryInvocationHandler implements InvocationHandler {
+
+	private IEmployee employee;
+	
+	
+	
+	public EmployeeSalaryInvocationHandler(IEmployee employee) {
+		super();
+		this.employee = employee;
+	}
+
+
+
+	@Override
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+//		pre-processing
+	
+		if( method.getName().equals("giveHike")) {
+		Double hikeAmount =(Double)args[0];
+		if(hikeAmount<=0) throw new RuntimeException("Invalid amount ");
+		}
+//		making actual call to my service layer
+		Object invokedmethod = method.invoke(employee, args);
+//		post processing
+		System.out.println("executing method : "+method.getName()+" for employeeId "+employee.getId(),employee.getName());
+		return invokedmethod;
+	}
+
+}

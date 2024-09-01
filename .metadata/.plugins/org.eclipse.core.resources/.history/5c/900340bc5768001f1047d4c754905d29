@@ -1,0 +1,5 @@
+package com.dynamicproxy.proxy;
+
+public class EmployeeSalaryInvocationHandler {
+
+}

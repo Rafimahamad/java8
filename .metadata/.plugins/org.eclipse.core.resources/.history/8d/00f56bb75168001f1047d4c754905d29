@@ -1,0 +1,34 @@
+package com.proxy;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+
+//Reflection
+public class Test {
+	public static void main(String[] args) throws ClassNotFoundException {
+
+Class<?> studentInfo = Class.forName("com.proxy.Student");
+Constructor<?>[] constructor = studentInfo.getConstructors();
+System.out.println("constructors ....");
+for(Constructor constr:constructor) {
+	System.out.println(constr);
+}
+
+Method[] declaredMethods = studentInfo.getDeclaredMethods();
+System.out.println("Methods ....");
+for(Method methods:declaredMethods) {
+	System.out.println(methods);
+}
+
+Class<Student> student = Student.class;
+
+	Constructor<?>[] constructors = student.getConstructors();
+	Method[] methods = student.getMethods();
+	Method[] declaredMethods2 = student.getDeclaredMethods();
+	System.out.println("loading student class");
+	System.out.println("constructors : "+constructors);
+	System.out.println("methods "+methods);
+	System.out.println("declaredMethods2 "+declaredMethods2);
+	
+	}
+}

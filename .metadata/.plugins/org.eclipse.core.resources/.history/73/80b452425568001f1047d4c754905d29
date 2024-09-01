@@ -1,0 +1,18 @@
+package com.dynamicproxy;
+
+public class ITEmployee implements IEmployee{
+
+	private Double salary;
+	@Override
+	public void giveHike(Double amount) {
+		this.salary=this.salary+amount;
+	System.out.println(this.salary);	
+	}
+
+	@Override
+	public void payCut(Double amount) {
+		this.salary=this.salary-amount;
+		System.out.println(this.salary);	
+	}
+
+}

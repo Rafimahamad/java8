@@ -1,0 +1,31 @@
+package com.dynamicproxy.proxy;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+import com.dynamicproxy.dto.IEmployee;
+
+public class EmployeeSalaryInvocationHandler implements InvocationHandler {
+
+	private IEmployee employee;
+	
+	
+	
+	public EmployeeSalaryInvocationHandler(IEmployee employee) {
+		super();
+		this.employee = employee;
+	}
+
+
+
+	@Override
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+//		pre-processing
+		method.getParameters()
+//		making actual call to my service layer
+		method.invoke(employee, args);
+//		post processing
+		return null;
+	}
+
+}

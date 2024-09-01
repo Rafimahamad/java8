@@ -1,0 +1,12 @@
+package com.dynamicproxy;
+
+public class Client {
+public static void main(String[] args) {
+	ITEmployee itEmployee = new ITEmployee();
+	itEmployee.setId(412);
+	itEmployee.setName("Rafi");
+	itEmployee.setSalary(30000.0);
+	itEmployee.giveHike(5000.00);
+	
+}
+}

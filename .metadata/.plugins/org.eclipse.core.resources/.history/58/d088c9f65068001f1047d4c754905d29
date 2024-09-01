@@ -1,0 +1,18 @@
+package com.proxy;
+
+import java.lang.reflect.Constructor;
+
+//Reflection
+public class Test {
+	public static void main(String[] args) throws ClassNotFoundException {
+
+Class<?> studentInfo = Class.forName("com.proxy.Student");
+Constructor<?>[] constructor = studentInfo.getConstructors();
+for(Constructor constr:constructor) {
+	System.out.println(constr);
+}
+
+
+	}
+
+}

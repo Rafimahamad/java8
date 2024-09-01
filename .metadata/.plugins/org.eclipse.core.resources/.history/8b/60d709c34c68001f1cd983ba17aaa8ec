@@ -1,0 +1,14 @@
+package proxy;
+
+import proxy.DailySession;
+
+public class Student implements DailySession {
+
+	@Override
+	public void attendSession() {
+		System.out.println("attending the session...");
+		
+	}
+	
+
+}
