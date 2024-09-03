@@ -1,8 +1,11 @@
 package StringDuplicateChars;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class StringDuplicateCharByJava8 {
@@ -10,6 +13,16 @@ public class StringDuplicateCharByJava8 {
 	public static void main(String[] args) {
 		String s="Mahammad Rafi";
 		findDuplicateChars(s.toLowerCase());
+		
+		Character first_non_repeatedChar = s.toLowerCase().chars()  // Convert the string to an IntStream
+        .mapToObj(c -> (char) c)  // Convert each int to a char
+        .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))  // Count occurrences using LinkedHashMap to maintain insertion order
+        .entrySet().stream()  // Convert the Map to a Stream of Map entries
+        .filter(entry -> entry.getValue() == 1)  // Filter out entries with a count of 1
+        .map(Map.Entry::getKey)  // Get the key (character)
+        .findFirst()  // Find the first element in the Stream
+	    .orElse(null);
+		System.out.println("first non repeated char in "+s+" is : "+first_non_repeatedChar);
 	}
 
 	private static void findDuplicateChars(String s) {
@@ -27,7 +40,11 @@ public class StringDuplicateCharByJava8 {
 //	charCountMap.entrySet().stream()
 //	.filter(entry->entry.getValue()>1)
 //	.forEach(e->System.out.println(e.getKey()+" "+e.getValue()));
-//		
+//	
+		
+		
+		
+		
 	}
 
 }

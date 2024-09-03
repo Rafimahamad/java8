@@ -1,4 +1,4 @@
- package StreamAPIDemo;
+package StreamAPIDemo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +42,9 @@ public class Stream1 {
 		
 		
 //		using stream
+		
+		Optional<Integer> sum = list2.stream().reduce((a,b)->a+b);
+		System.out.println("Sum = "+sum);
 		
 		Stream<Integer> stream = list2.stream();
 		List<Integer> newList = stream.filter(i -> i%2 == 0).collect(Collectors.toList());
